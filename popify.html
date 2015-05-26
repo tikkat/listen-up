@@ -1,0 +1,42 @@
+<head>
+  <title>popify</title>
+  <link href="http://fonts.googleapis.com/css?family=Petrona|Inconsolata|Droid+Sans" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>[List]<span class="green-text">EnUp <i class="fa fa-spotify"></i></span></h1>
+    <p>Type a song name and click on "Search". <br>Add your favourite songs to the playlist of the party</p>
+    <form id="search-form">
+        <div class="input-group">
+          <input id="query" type="text" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Song Name</label>
+        </div>
+        <button type="submit" id="search" class="search-btn">Search</button>
+    </form>
+      {{>result}}
+  </div>
+</body>
+
+<template name="result">
+{{#each showResponse.tracks.items}}
+  <div style="background-image:url({{album.images.[1].url}})" class="cover">
+    <div class="{{clickedSong}}" data-track-id="{{id}}" data-preview-url="{{preview_url}}">
+      <span class="play-music">Click again to play <br><i class="fa fa-music"></i></span>
+    </div>
+
+    <div class="song-content">
+      <div class="song">
+        {{name}}
+      </div>
+      <div class="artist">
+        {{artists.[0].name}}
+      </div>
+    </div>
+
+  </div>
+{{/each}}
+</template>

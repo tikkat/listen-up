@@ -1,0 +1,219 @@
+/* Mixins */
+
+@mixin noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select:  none;
+    -moz-user-select:    none;
+    -ms-user-select:     none;
+    user-select:         none;
+}
+
+/* Variables */
+
+$mobile-size: 540px;
+$sweet-green: #2ebd59;
+$ghost-white: #F8F8FF;
+
+/* CSS declarations go here */
+
+html{
+  font-family: 'Open sans';
+  font-size: 20px;
+  color: $ghost-white;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+  background-attachment: fixed;
+}
+
+.container {
+  margin: auto;
+  max-width: 1400px;
+  text-align: center;
+
+  p {font-weight: light;}
+
+  h1 {
+    font-family: 'Petrona', sans;
+    font-size:100px;
+    color: $ghost-white;
+
+    @media only screen and (max-width : $mobile-size) {
+      font-size: 70px;
+    }
+  }
+}
+
+.green-text {
+  color: $sweet-green;
+}
+
+.cover {
+  width:                       250px;
+  height:                      250px;
+  display:                     inline-block;
+  background-size:             cover;
+  margin:                      20px 5px;
+  border-top-right-radius:     30%;
+  border-top-left-radius:      30%;
+  border-bottom-left-radius:   30%;
+  border-bottom-right-radius:  30%;
+  cursor:                      pointer;
+  box-shadow:                  3px 3px 0 rgba(0, 0, 0, 0.35);
+  outline:                     none;
+  overflow:                    hidden;
+
+
+  .song-content {
+    color:white;
+    position:relative;
+    width: 100%;
+    height: 100%;
+    top: 75px;
+  }
+
+  .song {
+    font-size: 24px;
+    background-color:rgba(255,0,0,0.7s);
+    @include noselect;
+  }
+
+  .artist {
+    font-size: 20px;
+    background-color:rgba(0,0,0,0.7);
+    @include noselect;
+  }
+
+  .add-song {
+    width: 100%;
+    height: 100%;
+    transition:all 1s ease;
+    font-size: 26px;
+    font-weight: bold;
+    color: #81b71a;
+    background-color:rgba(0,0,0,0.7);
+
+    span {
+      position: relative;
+      top: 3em;
+      @include noselect;
+    }
+
+    i {
+      font-size: 50px;
+    }
+  }
+
+}
+
+.cover:hover {
+  transition:0.7s;
+  transform: scale(1.1);
+
+}
+
+
+/* INPUT FIELDS */
+
+.input-group {
+
+  position:        relative;
+  margin-top:      4em;
+  margin-bottom:   2em;
+  left:            calc(50% - 150px);
+
+  input {
+    text-align: center;
+    font-size:         24px;
+    padding:           10px 10px 10px 5px;
+    display:           block;
+    width:             300px;
+    border:            none;
+    background-color:  transparent;
+    border-bottom:     1px solid #757575;
+    color:             lightgray;
+    &:focus { outline:none; }
+  }
+
+  label {
+    color: rgba(245,245,245,0.6);
+    font-size:      24px;
+    font-weight:    normal;
+    position:       absolute;
+    pointer-events: none;
+    left:           5px;
+    top:            10px;
+    left:           6%;
+    transition:     0.2s ease all;
+  }
+
+  /* active state */
+  input:focus ~ label, input:valid ~ label {
+    top:            -20px;
+    left:           7.8%;
+    font-size:      14px;
+    color:          $sweet-green;
+  }
+
+  /* BOTTOM BARS ================================= */
+  .bar  { position:relative; display:block; width:300px; }
+  .bar:before, .bar:after   {
+    content:       '';
+    height:        2px;
+    width:         0;
+    bottom:        1px;
+    position:      absolute;
+    background:    $sweet-green;
+    transition:    0.2s ease all;
+  }
+  .bar:before {
+    left: 50%;
+  }
+  .bar:after {
+    right: 50%;
+  }
+
+  /* active state */
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+  }
+}
+
+/* BUTTONS */
+
+.search-btn {
+  border:none;
+  text-transform: uppercase;
+  background-color: $sweet-green;
+  color: white;
+  font-size: 30px;
+  display: block;
+  margin: auto;
+  text-decoration: none;
+  outline: none;
+  cursor:pointer;
+  padding: 22px 66px;
+  -moz-border-radius:5%;
+	-webkit-border-radius:5%;
+	border-radius:5%;
+	font-weight:bold;
+  margin-bottom:20px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.search-btn:hover {
+	background-color:#5cbf2a;
+}
+.search-btn:active {
+  position:relative;
+  top:1px;
+}
+
+.hidden {
+  display: none;
+}
